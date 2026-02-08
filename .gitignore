@@ -1,0 +1,21 @@
+# Claude Code local settings
+.claude/
+
+# Node modules
+node_modules/
+
+# Synology recycle bin
+\#recycle/
+
+# Data Sync - only include 26-000-050
+Data Sync/21-000-22-000/
+Data Sync/22-000-400/
+Data Sync/23-000-400/
+Data Sync/24-000-100/
+Data Sync/24-100-200/
+Data Sync/24-200-300/
+Data Sync/25-000-050/
+Data Sync/25-050-100/
+Data Sync/25-100-150/
+Data Sync/25-150-200/
+Data Sync/25-200-250/
