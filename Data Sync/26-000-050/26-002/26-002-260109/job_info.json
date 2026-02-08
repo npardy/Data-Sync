@@ -1,0 +1,19 @@
+{
+  "jobNumber": "26-002",
+  "date": "260109",
+  "address": "15 Churchill's Road, PCSP",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-09T18:58:59.918Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "93665a8d-bfbe-45e1-b1a5-3c06f91c732c",
+      "timestamp": "2026-01-12T19:22:37.280Z",
+      "folder": "Field_Data/011226-0352PM",
+      "fileCount": 4,
+      "totalBytes": 44785,
+      "durationMs": 5
+    }
+  ]
+}

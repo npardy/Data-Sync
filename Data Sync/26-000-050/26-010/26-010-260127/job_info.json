@@ -1,0 +1,44 @@
+{
+  "jobNumber": "26-010",
+  "date": "260127",
+  "address": "18 Franks Road, CBS",
+  "jobType": "survey_rpr",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-27T12:51:13.029Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "fb82b718-7907-4451-8b72-e0088d3cd017",
+      "timestamp": "2026-01-27T17:41:35.265Z",
+      "folder": "Field_Data/260127-0211PM",
+      "fileCount": 5,
+      "totalBytes": 500803,
+      "durationMs": 8
+    },
+    {
+      "uploadId": "85f16c3f-80d0-4900-aff6-4ff2cc858d49",
+      "timestamp": "2026-01-27T20:17:57.803Z",
+      "folder": "Field_Data/260127-0447PM",
+      "fileCount": 5,
+      "totalBytes": 500803,
+      "durationMs": 8
+    },
+    {
+      "uploadId": "379fd3bf-8240-4793-a913-e21736521c94",
+      "timestamp": "2026-01-28T10:51:40.171Z",
+      "folder": "Field_Data/260128-0721AM",
+      "fileCount": 5,
+      "totalBytes": 500803,
+      "durationMs": 29
+    },
+    {
+      "uploadId": "2a8585f6-6b1d-4f07-80a6-7a3a61307ed5",
+      "timestamp": "2026-01-28T17:02:47.099Z",
+      "folder": "Field_Data/260128-0132PM",
+      "fileCount": 5,
+      "totalBytes": 500803,
+      "durationMs": 26
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "jobNumber": "26-003",
+  "date": "260111",
+  "address": "5 Lake Wynds Drive, Paradise",
+  "referenceNumber": "",
+  "description": "Survey RPR",
+  "operator": "",
+  "created": "2026-01-11T23:56:58.988Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "7bb32e1a-7b5a-4860-ba3d-986ad407327e",
+      "timestamp": "2026-01-12T15:30:29.478Z",
+      "folder": "Field_Data/011226-1200PM",
+      "fileCount": 13,
+      "totalBytes": 37932401,
+      "durationMs": 63
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "jobNumber": "26-002-260108",
+  "date": "260108",
+  "address": "15 Churchill - additional parcels",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-08T18:49:57.819Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "92f4c21d-7fda-40d7-a90b-21e70cb03a36",
+      "timestamp": "2026-01-09T18:00:17.902Z",
+      "folder": "Field_Data/010926-0230PM",
+      "fileCount": 10,
+      "totalBytes": 15955620,
+      "durationMs": 31
+    },
+    {
+      "uploadId": "1d730c49-2e87-46c5-880a-db95cb2692f0",
+      "timestamp": "2026-01-12T19:24:00.832Z",
+      "folder": "Field_Data/011226-0354PM",
+      "fileCount": 11,
+      "totalBytes": 15966996,
+      "durationMs": 29
+    }
+  ]
+}

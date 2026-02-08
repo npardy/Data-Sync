@@ -1,0 +1,36 @@
+{
+  "jobNumber": "26-001",
+  "date": "260106",
+  "address": "49 Magee Drive, Paradise",
+  "referenceNumber": "",
+  "description": "Survey RPR",
+  "operator": "",
+  "created": "2026-01-06T18:08:01.782Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "33a9c541-1235-4b9d-a4a0-4439fb13da6b",
+      "timestamp": "2026-01-07T12:55:07.572Z",
+      "folder": "Field_Data/010726-0925AM",
+      "fileCount": 11,
+      "totalBytes": 28551888,
+      "durationMs": 27
+    },
+    {
+      "uploadId": "5d74d0ad-9115-4164-8842-d79675892cad",
+      "timestamp": "2026-01-20T13:08:19.572Z",
+      "folder": "Field_Data/260120-0938AM",
+      "fileCount": 11,
+      "totalBytes": 28552274,
+      "durationMs": 27
+    },
+    {
+      "uploadId": "b2b0ce18-0037-4cfb-a060-0f26604f0633",
+      "timestamp": "2026-01-21T16:50:34.146Z",
+      "folder": "Field_Data/260121-0120PM",
+      "fileCount": 11,
+      "totalBytes": 28552274,
+      "durationMs": 37
+    }
+  ],
+  "jobType": "survey_rpr"
+}

@@ -1,0 +1,19 @@
+{
+  "jobNumber": "26-006",
+  "date": "260119",
+  "address": "5 Reddley Place, CBS",
+  "referenceNumber": "",
+  "description": "Excavation Layout",
+  "operator": "",
+  "created": "2026-01-19T16:01:37.061Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "f8ee6d86-601b-4666-8575-d5f7c2ea7c3b",
+      "timestamp": "2026-01-19T17:19:48.716Z",
+      "folder": "Field_Data/011926-0149PM",
+      "fileCount": 5,
+      "totalBytes": 425054,
+      "durationMs": 4
+    }
+  ]
+}

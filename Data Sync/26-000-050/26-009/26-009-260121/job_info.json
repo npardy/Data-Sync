@@ -1,0 +1,52 @@
+{
+  "jobNumber": "26-009",
+  "date": "260121",
+  "address": "48-50 Whelan's Crescent, Paradise",
+  "jobType": "survey_rpr",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-21T13:24:06.105Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "f763b3e3-c217-4281-864e-71ab3504e616",
+      "timestamp": "2026-01-21T18:34:08.902Z",
+      "folder": "Field_Data/260121-0304PM",
+      "fileCount": 12,
+      "totalBytes": 41124765,
+      "durationMs": 36
+    },
+    {
+      "uploadId": "b0531d50-fea6-47b9-926c-42c006a826d6",
+      "timestamp": "2026-01-21T18:43:18.760Z",
+      "folder": "Field_Data/260121-0313PM",
+      "fileCount": 13,
+      "totalBytes": 41174973,
+      "durationMs": 35
+    },
+    {
+      "uploadId": "d13752a0-fb6c-42f6-a9e3-d2c5c3697b6f",
+      "timestamp": "2026-01-21T20:12:37.329Z",
+      "folder": "Field_Data/260121-0442PM",
+      "fileCount": 15,
+      "totalBytes": 41253428,
+      "durationMs": 37
+    },
+    {
+      "uploadId": "2bdb2144-ddec-4fe8-b19e-6c292cc33308",
+      "timestamp": "2026-01-22T19:14:55.165Z",
+      "folder": "Field_Data/260122-0344PM",
+      "fileCount": 16,
+      "totalBytes": 41262574,
+      "durationMs": 47
+    },
+    {
+      "uploadId": "1a06a80a-5fcb-4ca7-be6d-8b7881d928c7",
+      "timestamp": "2026-01-22T20:16:08.938Z",
+      "folder": "Field_Data/260122-0446PM",
+      "fileCount": 18,
+      "totalBytes": 41346906,
+      "durationMs": 39
+    }
+  ]
+}

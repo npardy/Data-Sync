@@ -1,0 +1,36 @@
+{
+  "jobNumber": "26-007",
+  "date": "260128",
+  "address": "68 Buckingham Drive, CBS",
+  "jobType": "building_construction",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-28T17:11:35.886Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "28730d49-1446-4a92-9930-5087f34f96ef",
+      "timestamp": "2026-01-28T17:14:49.287Z",
+      "folder": "Field_Data/260128-0144PM",
+      "fileCount": 2,
+      "totalBytes": 3947,
+      "durationMs": 9
+    },
+    {
+      "uploadId": "c9315669-072a-46bb-8d49-9085b855ec67",
+      "timestamp": "2026-01-28T17:42:41.783Z",
+      "folder": "Field_Data/260128-0212PM",
+      "fileCount": 2,
+      "totalBytes": 4286,
+      "durationMs": 2
+    },
+    {
+      "uploadId": "10bf8e84-2c14-4caf-82a6-7c06cdfd3a47",
+      "timestamp": "2026-01-28T19:24:17.739Z",
+      "folder": "Field_Data/260128-0354PM",
+      "fileCount": 3,
+      "totalBytes": 4907,
+      "durationMs": 5
+    }
+  ]
+}

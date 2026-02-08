@@ -1,0 +1,27 @@
+{
+  "jobNumber": "26-002",
+  "date": "260108",
+  "address": "15 Churchill's Road, PC-SP",
+  "referenceNumber": "",
+  "description": "Survey RPR",
+  "operator": "",
+  "created": "2026-01-08T14:02:35.086Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "24c90f69-78f7-4241-bd8f-0c8c00cb4beb",
+      "timestamp": "2026-01-09T17:59:34.224Z",
+      "folder": "Field_Data/010926-0229PM",
+      "fileCount": 13,
+      "totalBytes": 39985552,
+      "durationMs": 35
+    },
+    {
+      "uploadId": "84eab101-ef00-4a96-9cfb-27401c7ce4a1",
+      "timestamp": "2026-01-12T19:23:28.887Z",
+      "folder": "Field_Data/011226-0353PM",
+      "fileCount": 14,
+      "totalBytes": 39986716,
+      "durationMs": 50
+    }
+  ]
+}

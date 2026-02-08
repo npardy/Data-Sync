@@ -1,0 +1,35 @@
+{
+  "_schema_version": "1.0",
+  "job_number": "26-008",
+  "controller_job": "26-008-260120",
+  "upload_folder": "260129-0920AM",
+  "upload_timestamp": "2026-01-29T12:50:33.638Z",
+  "operator": "Joe",
+  "job_type": "survey_rpr",
+  "upload_type": "complete",
+  "replaces_folder": null,
+  "time_spent": {
+    "field_hours": 0.5,
+    "travel_hours_oneway": 0.25
+  },
+  "field_work_done": true,
+  "estimated_time_remaining": null,
+  "pins_found": "n/a",
+  "pins_placed": "n/a",
+  "construction_tasks_completed": [],
+  "custom_tasks_completed": [],
+  "notes": "TEST",
+  "qbo_sync": {
+    "time_synced": false,
+    "time_entry_id": null,
+    "synced_at": null
+  },
+  "csv_extracted": {
+    "total_points": 0,
+    "evidence_found": [],
+    "pins_placed": [],
+    "evidence_not_found": 0,
+    "evidence_to_find": 0,
+    "monument_checks": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "_schema_version": "1.0",
+  "job_number": "26-010",
+  "controller_job": "26-010-260127",
+  "upload_folder": "260128-0132PM",
+  "upload_timestamp": "2026-01-28T17:02:47.099Z",
+  "operator": "Joe",
+  "job_type": "survey_rpr",
+  "upload_type": "complete",
+  "replaces_folder": null,
+  "time_spent": {
+    "field_hours": 0.5,
+    "travel_hours_oneway": 0.25
+  },
+  "field_work_done": true,
+  "estimated_time_remaining": null,
+  "pins_found": "yes",
+  "pins_placed": "no",
+  "construction_tasks_completed": [],
+  "custom_tasks_completed": [],
+  "notes": "JUST A TEST",
+  "qbo_sync": {
+    "time_synced": false,
+    "time_entry_id": null,
+    "synced_at": null
+  },
+  "csv_extracted": {
+    "total_points": 124,
+    "evidence_found": [
+      "0127096 - FIP",
+      "0127104 - FIP",
+      "0127105 - FIP",
+      "0127107 - FIP",
+      "0127108 - FIP",
+      "0127120 - FIP",
+      "0127123 - FIP"
+    ],
+    "pins_placed": [],
+    "evidence_not_found": 5,
+    "evidence_to_find": 0,
+    "monument_checks": [
+      "96G6120"
+    ]
+  }
+}

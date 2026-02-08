@@ -1,0 +1,20 @@
+{
+  "jobNumber": "26-007",
+  "date": "260120",
+  "address": "68 Buckingham Drive, CBS",
+  "jobType": "topo",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-20T17:17:17.595Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "5675614d-e5d7-4ee8-81fc-006b7cf7f6f2",
+      "timestamp": "2026-01-20T21:02:32.423Z",
+      "folder": "Field_Data/260120-0532PM",
+      "fileCount": 14,
+      "totalBytes": 39462995,
+      "durationMs": 43
+    }
+  ]
+}

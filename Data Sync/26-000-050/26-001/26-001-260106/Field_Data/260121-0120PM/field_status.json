@@ -1,0 +1,47 @@
+{
+  "_schema_version": "1.0",
+  "job_number": "26-001",
+  "controller_job": "26-001-260106",
+  "upload_folder": "260121-0120PM",
+  "upload_timestamp": "2026-01-21T16:50:34.146Z",
+  "operator": "Allan",
+  "job_type": "survey_rpr",
+  "upload_type": "complete",
+  "replaces_folder": null,
+  "time_spent": {
+    "field_hours": 0.5,
+    "travel_hours_oneway": 0.25
+  },
+  "field_work_done": true,
+  "estimated_time_remaining": null,
+  "pins_found": "yes",
+  "pins_placed": "yes",
+  "construction_tasks_completed": [],
+  "custom_tasks_completed": [],
+  "notes": null,
+  "qbo_sync": {
+    "time_synced": false,
+    "time_entry_id": null,
+    "synced_at": null
+  },
+  "csv_extracted": {
+    "total_points": 82,
+    "evidence_found": [
+      "0106062 - FIP",
+      "0106063 - FIP",
+      "0106064 - FIP",
+      "0106065 - FIP",
+      "0106066 - FIP",
+      "0106073 - FIP"
+    ],
+    "pins_placed": [
+      "0106074 - PIP",
+      "0106075 - PIP"
+    ],
+    "evidence_not_found": 3,
+    "evidence_to_find": 2,
+    "monument_checks": [
+      "26624"
+    ]
+  }
+}

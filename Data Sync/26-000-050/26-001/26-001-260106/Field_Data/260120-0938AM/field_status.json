@@ -1,0 +1,27 @@
+{
+  "_schema_version": "1.0",
+  "job_number": "26-001",
+  "controller_job": "26-001-260106",
+  "upload_folder": "260120-0938AM",
+  "upload_timestamp": "2026-01-20T13:08:19.572Z",
+  "operator": "Allan",
+  "job_type": "survey_rpr",
+  "is_reupload": false,
+  "replaces_folder": null,
+  "time_spent": {
+    "field_hours": 2,
+    "travel_hours_oneway": 0.5
+  },
+  "field_work_done": true,
+  "estimated_time_remaining": null,
+  "pins_found": "yes",
+  "pins_placed": "yes",
+  "construction_tasks_completed": [],
+  "custom_tasks_completed": [],
+  "notes": null,
+  "qbo_sync": {
+    "time_synced": false,
+    "time_entry_id": null,
+    "synced_at": null
+  }
+}

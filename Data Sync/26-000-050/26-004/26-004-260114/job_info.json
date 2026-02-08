@@ -1,0 +1,44 @@
+{
+  "jobNumber": "26-004",
+  "date": "260114",
+  "address": "158 School Road, Tor's Cove",
+  "referenceNumber": "",
+  "description": "Survey RPR",
+  "operator": "",
+  "created": "2026-01-14T13:54:22.955Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "e20975b7-3389-4d56-bfae-1cdd583e8d2e",
+      "timestamp": "2026-01-23T14:11:50.775Z",
+      "folder": "Field_Data/260123-1041AM",
+      "fileCount": 13,
+      "totalBytes": 47664930,
+      "durationMs": 49
+    },
+    {
+      "uploadId": "d5fcadbd-6038-48fa-b59a-d2084c3a6e78",
+      "timestamp": "2026-01-23T14:27:59.972Z",
+      "folder": "Field_Data/260123-1057AM",
+      "fileCount": 13,
+      "totalBytes": 47664930,
+      "durationMs": 53
+    },
+    {
+      "uploadId": "c61db60a-72aa-4c64-8e35-fdaddf693d6a",
+      "timestamp": "2026-01-23T15:01:04.312Z",
+      "folder": "Field_Data/260123-1131AM",
+      "fileCount": 13,
+      "totalBytes": 47664930,
+      "durationMs": 226
+    },
+    {
+      "uploadId": "0e6f2cfd-7c1f-4c89-8a5b-1bf8e174f422",
+      "timestamp": "2026-01-28T11:01:24.011Z",
+      "folder": "Field_Data/260128-0731AM",
+      "fileCount": 13,
+      "totalBytes": 47664930,
+      "durationMs": 215
+    }
+  ],
+  "jobType": "survey_rpr"
+}

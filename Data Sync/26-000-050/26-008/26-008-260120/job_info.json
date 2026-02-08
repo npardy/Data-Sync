@@ -1,0 +1,36 @@
+{
+  "jobNumber": "26-008",
+  "date": "260120",
+  "address": "132 Green Acre Drive, St. John's",
+  "jobType": "survey_rpr",
+  "referenceNumber": "",
+  "description": "",
+  "operator": "",
+  "created": "2026-01-20T13:37:28.004Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "0119accc-7be7-43d7-9acd-6e03fa5ece34",
+      "timestamp": "2026-01-20T16:02:33.639Z",
+      "folder": "Field_Data/260120-1232PM",
+      "fileCount": 13,
+      "totalBytes": 31620428,
+      "durationMs": 29
+    },
+    {
+      "uploadId": "a1e99b13-f7a8-4385-8ab8-51982f82187c",
+      "timestamp": "2026-01-20T21:06:48.204Z",
+      "folder": "Field_Data/260120-0536PM",
+      "fileCount": 15,
+      "totalBytes": 31668476,
+      "durationMs": 29
+    },
+    {
+      "uploadId": "e0c4feac-40a3-4fe3-a685-7b2402a87e2f",
+      "timestamp": "2026-01-29T12:50:33.638Z",
+      "folder": "Field_Data/260129-0920AM",
+      "fileCount": 4,
+      "totalBytes": 329755,
+      "durationMs": 8
+    }
+  ]
+}

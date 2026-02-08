@@ -1,0 +1,42 @@
+{
+  "_schema_version": "1.0",
+  "job_number": "26-005",
+  "controller_job": "26-005-260119",
+  "upload_folder": "260122-0952AM",
+  "upload_timestamp": "2026-01-22T13:22:49.578Z",
+  "operator": "Allan",
+  "job_type": "building_construction",
+  "upload_type": "complete",
+  "replaces_folder": null,
+  "time_spent": {
+    "field_hours": 2,
+    "travel_hours_oneway": 0.25
+  },
+  "field_work_done": true,
+  "estimated_time_remaining": null,
+  "pins_found": "n/a",
+  "pins_placed": null,
+  "construction_tasks_completed": [
+    "footing_placement"
+  ],
+  "custom_tasks_completed": [
+    "PAD TOPO"
+  ],
+  "notes": "HAD TO WAIT FOR ADDITIONAL EXCAVATION OF ONE AREA.",
+  "qbo_sync": {
+    "time_synced": false,
+    "time_entry_id": null,
+    "synced_at": null
+  },
+  "csv_extracted": {
+    "total_points": 72,
+    "evidence_found": [],
+    "pins_placed": [],
+    "evidence_not_found": 0,
+    "evidence_to_find": 0,
+    "monument_checks": [
+      "50001",
+      "50002"
+    ]
+  }
+}

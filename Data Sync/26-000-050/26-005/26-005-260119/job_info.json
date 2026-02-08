@@ -1,0 +1,28 @@
+{
+  "jobNumber": "26-005",
+  "date": "260119",
+  "address": "13 Reddley Place, CBS",
+  "referenceNumber": "",
+  "description": "Excavation Layout",
+  "operator": "",
+  "created": "2026-01-19T13:25:30.920Z",
+  "fieldDataUploads": [
+    {
+      "uploadId": "1f82b130-11b1-4c68-8a53-0a9593fe4a85",
+      "timestamp": "2026-01-19T17:20:33.021Z",
+      "folder": "Field_Data/011926-0150PM",
+      "fileCount": 6,
+      "totalBytes": 6916231,
+      "durationMs": 8
+    },
+    {
+      "uploadId": "ff2ee55c-4de7-4aad-a42f-28d90d4a0b8a",
+      "timestamp": "2026-01-22T13:22:49.578Z",
+      "folder": "Field_Data/260122-0952AM",
+      "fileCount": 10,
+      "totalBytes": 7333636,
+      "durationMs": 21
+    }
+  ],
+  "jobType": "building_construction"
+}
