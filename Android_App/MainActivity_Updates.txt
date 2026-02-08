@@ -1,0 +1,52 @@
+// ADD THESE UPDATES TO MainActivity.java
+
+// 1. Add this field at the top of the class:
+private FileDownloadManager downloadManager;
+
+// 2. In onCreate() after WebView setup, add:
+downloadManager = new FileDownloadManager(this, webView);
+
+// 3. Replace the syncJobToTrimble method in TrimbleFileInterface class:
+
+@JavascriptInterface
+public void syncJobToTrimble(String jobPath) {
+    Log.d(TAG, "Syncing job to Trimble: " + jobPath);
+    
+    // Use the current portal URL
+    String serverUrl = PORTAL_URL;
+    
+    // Start download
+    runOnUiThread(() -> {
+        Toast.makeText(MainActivity.this, "Starting download...", Toast.LENGTH_SHORT).show();
+    });
+    
+    downloadManager.downloadJob(serverUrl, jobPath);
+}
+
+// 4. Update the uploadFieldData method to use new endpoint (optional - for timestamps):
+// Change this line:
+String url = PORTAL_URL + "/api/upload-field-data";
+// To:
+String url = PORTAL_URL + "/api/upload-field-data-android";
+
+// 5. Add JavaScript callbacks in onCreate() after WebView setup:
+
+webView.evaluateJavascript(
+    "window.TrimbleSyncCallback = {" +
+    "  onDownloadProgress: function(current, total, fileName) {" +
+    "    console.log('Downloading ' + current + '/' + total + ': ' + fileName);" +
+    "    if (window.onDownloadProgress) window.onDownloadProgress(current, total, fileName);" +
+    "  }," +
+    "  onDownloadComplete: function(jobPath, fileCount) {" +
+    "    console.log('Download complete: ' + jobPath + ' (' + fileCount + ' files)');" +
+    "    if (window.onDownloadComplete) window.onDownloadComplete(jobPath, fileCount);" +
+    "    if (window.TrimbleSync && window.TrimbleSync.listTrimbleJobs) {" +
+    "      window.TrimbleSync.listTrimbleJobs();" +
+    "    }" +
+    "  }," +
+    "  onDownloadError: function(error) {" +
+    "    console.error('Download error: ' + error);" +
+    "    alert('Download failed: ' + error);" +
+    "  }" +
+    "};", null
+);
