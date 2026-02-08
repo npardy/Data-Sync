@@ -1,0 +1,59 @@
+FROM node:18
+
+# Install Python and Wine with dependencies
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y \
+    python3 \
+    python3-pip \
+    wine \
+    wine32 \
+    wine64 \
+    cabextract \
+    wget \
+    xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install winetricks manually
+RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
+    chmod +x winetricks && \
+    mv winetricks /usr/local/bin/
+
+# Set Wine environment
+ENV WINEARCH=win64
+ENV WINEPREFIX=/root/.wine
+ENV DISPLAY=:99
+
+# Initialize Wine and install .NET Framework 4.7.2
+RUN Xvfb :99 -screen 0 1024x768x16 & \
+    wine wineboot --init && \
+    winetricks -q dotnet472 && \
+    wineserver -k
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install Node dependencies
+RUN npm install
+
+# Copy application files
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p /app/trimble-converter/geodata
+
+# Use the Docker-specific config file for the converter if it exists
+RUN if [ -f /app/trimble-converter/JobConversion/TrimbleAccess.JobConverter.ConverterProcess.exe.config.docker ]; then \
+    cp /app/trimble-converter/JobConversion/TrimbleAccess.JobConverter.ConverterProcess.exe.config.docker \
+       /app/trimble-converter/JobConversion/TrimbleAccess.JobConverter.ConverterProcess.exe.config; \
+    fi
+
+# Ensure converter executables have proper permissions
+RUN chmod -R 755 /app/trimble-converter/JobConversion/
+
+EXPOSE 3000
+
+# Start with virtual display for Wine
+CMD Xvfb :99 -screen 0 1024x768x16 & npm start

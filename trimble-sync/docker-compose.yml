@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  trimble-sync:
+    build: .
+    container_name: trimble-sync
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/volume1/Pardy Surveys/Data Sync/trimble-sync:/app"
+      - "/volume1/Pardy Surveys/Data Sync/office-jobs:/data/office"
+      - "/volume1/Pardy Surveys/Data Sync/controller-jobs:/data/controller"
+      - "/volume1/Pardy Surveys/Data Sync/templates:/data/templates"
+      - "/volume1/Pardy Surveys/Data Sync/notifications:/data/notifications"
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+      - TZ=America/St_Johns
+      - WINEDEBUG=-all
+      - DISPLAY=:0
+      # Server configuration
+      - PORT=3000
+      # Upload resilience flags (RECOMMENDED: Enable for production)
+      - UPLOAD_STREAMING_ENABLED=true
+      - UPLOAD_PROGRESS_API=true
+      - UPLOAD_CHECKSUM_ENABLED=true
+      - UPLOAD_IDEMPOTENCY_ENABLED=true
+      - UPLOAD_RESUME_ENABLED=false
+      # Server timeouts (extended for slow connections: 10 minutes)
+      - SERVER_TIMEOUT_MS=600000
+      - SERVER_KEEPALIVE_MS=65000
+      # Upload paths (container paths) - must be on same filesystem as /data/office for rename() to work
+      - UPLOAD_TEMP_DIR=/data/office/.uploads-temp
+      - UPLOAD_PARTIAL_DIR=/data/office/.uploads-partial
+      # Upload limits and persistence
+      - UPLOAD_MAX_FILE_MB=100
+      - IDEMPOTENCY_STORE_PATH=/app/upload-idempotency.json
+      # Legacy host redirects (for hostname migrations)
+      # NOTE: Only works when DNS for legacy host resolves to this server
+      - HOST_REDIRECTS_ENABLED=false
+      - HOST_REDIRECTS_LEGACY_HOSTS=pardysurveys.direct.quickconnect.to,pardysurveys.direct.quickconnect.to:3000
+      - HOST_REDIRECTS_TARGET_HOST=pardysurveys.synology.me
+      - HOST_REDIRECTS_TARGET_PROTO=https
+      # CORS allowed origins (optional; comma-separated; uses default logic if not set)
+      # - CORS_ALLOW_ORIGINS=https://pardysurveys.synology.me,http://192.168.1.41:3000
+      # Notification system (for Hive Mind integration)
+      - NOTIFICATIONS_ENABLED=true

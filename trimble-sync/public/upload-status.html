@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload Status - Trimble Sync</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #333;
+    }
+    .header {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      color: #1a1a1a;
+    }
+    .subtitle {
+      margin: 0;
+      color: #666;
+      font-size: 15px;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .refresh-btn {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .refresh-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+    .refresh-btn:active {
+      transform: translateY(0);
+    }
+    .last-update {
+      margin-left: 20px;
+      color: #999;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .upload-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: box-shadow 0.3s;
+    }
+    .upload-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .job-path {
+      font-weight: 600;
+      font-size: 16px;
+      color: #1a1a1a;
+      flex: 1;
+    }
+    .status {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status.started {
+      background: #fff3cd;
+      color: #856404;
+    }
+    .status.completed {
+      background: #d4edda;
+      color: #155724;
+    }
+    .status.failed {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #e9ecef;
+      border-radius: 5px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #28a745, #20c997);
+      transition: width 0.5s ease-in-out;
+      border-radius: 5px;
+    }
+    .meta {
+      font-size: 14px;
+      color: #666;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-icon {
+      opacity: 0.6;
+    }
+    .error-message {
+      color: #d32f2f;
+      margin-top: 12px;
+      padding: 12px;
+      background: #ffebee;
+      border-radius: 6px;
+      border-left: 4px solid #d32f2f;
+    }
+    .upload-id {
+      font-size: 12px;
+      color: #999;
+      margin-top: 10px;
+      font-family: 'Courier New', monospace;
+    }
+    .no-uploads {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+      font-style: italic;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .no-uploads-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+      opacity: 0.3;
+    }
+    .error-state {
+      text-align: center;
+      padding: 40px 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .error-state-title {
+      color: #d32f2f;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .meta-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📤 Upload Status Monitor</h1>
+    <p class="subtitle">Real-time tracking of field data uploads from TSC5 controllers</p>
+  </div>
+
+  <div class="controls">
+    <button class="refresh-btn" onclick="loadStatus()">🔄 Refresh Now</button>
+    <span id="last-update" class="last-update"></span>
+  </div>
+
+  <div id="uploads-container"></div>
+
+  <script>
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+    }
+
+    function formatDuration(ms) {
+      const sec = Math.floor(ms / 1000);
+      const min = Math.floor(sec / 60);
+      const hrs = Math.floor(min / 60);
+
+      if (hrs > 0) return `${hrs}h ${min % 60}m ${sec % 60}s`;
+      if (min > 0) return `${min}m ${sec % 60}s`;
+      return `${sec}s`;
+    }
+
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+        timeZone: 'America/St_Johns'
+      });
+    }
+
+    async function loadStatus() {
+      try {
+        const response = await fetch('/api/upload-status');
+
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('PROGRESS_API_DISABLED');
+          }
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        const container = document.getElementById('uploads-container');
+
+        if (!data.active || data.active.length === 0) {
+          container.innerHTML = `
+            <div class="no-uploads">
+              <div class="no-uploads-icon">📭</div>
+              <div>No active or recent uploads</div>
+              <div style="font-size: 13px; margin-top: 10px; color: #bbb;">
+                Uploads from the last 5 minutes will appear here
+              </div>
+            </div>
+          `;
+          document.getElementById('last-update').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+          return;
+        }
+
+        container.innerHTML = data.active.map(upload => {
+          const duration = upload.completedAt
+            ? upload.completedAt - upload.startTime
+            : Date.now() - upload.startTime;
+
+          const speed = upload.totalBytes && duration
+            ? ((upload.totalBytes / 1024) / (duration / 1000)).toFixed(1) + ' KB/s'
+            : 'calculating...';
+
+          const progress = upload.totalBytes && upload.bytesReceived
+            ? Math.round((upload.bytesReceived / upload.totalBytes) * 100)
+            : upload.status === 'completed' ? 100 : 0;
+
+          const bytesReceived = upload.bytesReceived || 0;
+          const totalBytes = upload.totalBytes || 0;
+
+          return `
+            <div class="upload-card">
+              <div class="card-header">
+                <div class="job-path">${upload.jobPath || 'Upload'}</div>
+                <span class="status ${upload.status}">${upload.status}</span>
+              </div>
+
+              ${upload.status === 'started' ? `
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: ${progress}%"></div>
+                </div>
+                <div class="meta">
+                  <strong>Progress:</strong> ${progress}% • ${formatBytes(bytesReceived)} / ${formatBytes(totalBytes)}
+                </div>
+              ` : ''}
+
+              <div class="meta">
+                <div class="meta-row">
+                  ${upload.fileCount ? `
+                    <div class="meta-item">
+                      <span class="meta-icon">📄</span>
+                      <span>${upload.fileCount} file${upload.fileCount !== 1 ? 's' : ''}</span>
+                    </div>
+                  ` : ''}
+                  ${upload.totalBytes ? `
+                    <div class="meta-item">
+                      <span class="meta-icon">💾</span>
+                      <span>${formatBytes(upload.totalBytes)}</span>
+                    </div>
+                  ` : ''}
+                  ${upload.status === 'started' ? `
+                    <div class="meta-item">
+                      <span class="meta-icon">⚡</span>
+                      <span>${speed}</span>
+                    </div>
+                  ` : ''}
+                  <div class="meta-item">
+                    <span class="meta-icon">⏱️</span>
+                    <span>${formatDuration(duration)}</span>
+                  </div>
+                  ${upload.startTime ? `
+                    <div class="meta-item">
+                      <span class="meta-icon">🕐</span>
+                      <span>Started ${formatTime(upload.startTime)}</span>
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+
+              ${upload.error ? `
+                <div class="error-message">
+                  <strong>Error:</strong> ${upload.error}
+                </div>
+              ` : ''}
+
+              ${upload.uploadId ? `
+                <div class="upload-id">ID: ${upload.uploadId}</div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('last-update').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+
+      } catch (error) {
+        console.error('Failed to load status:', error);
+
+        let errorMessage = 'Error: ' + error.message;
+        if (error.message === 'PROGRESS_API_DISABLED') {
+          errorMessage = `
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+              <strong style="color: #856404;">⚠️ Progress API is Disabled</strong>
+              <p style="color: #856404; margin: 10px 0 0 0; font-size: 14px;">
+                To enable real-time upload tracking, set <code>UPLOAD_PROGRESS_API=true</code> in docker-compose.yml and restart the server.
+              </p>
+            </div>
+          `;
+        }
+
+        document.getElementById('uploads-container').innerHTML = `
+          <div class="error-state">
+            <div class="error-state-title">⚠️ Unable to Load Upload Status</div>
+            <div style="color: #666; margin-top: 12px;">
+              ${errorMessage}
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Auto-refresh every 3 seconds
+    loadStatus();
+    setInterval(loadStatus, 3000);
+  </script>
+</body>
+</html>

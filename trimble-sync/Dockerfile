@@ -1,0 +1,71 @@
+FROM node:18
+
+# Install dependencies for Wine and X11
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    wine \
+    wine32 \
+    wine64 \
+    python3 \
+    python3-pip \
+    wget \
+    cabextract \
+    xvfb \
+    xauth \
+    x11-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up Wine environment
+ENV WINEARCH=win64
+ENV WINEPREFIX=/root/.wine
+ENV DISPLAY=:0
+ENV WINEDEBUG=-all
+
+# Download winetricks
+RUN wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
+    chmod +x /usr/local/bin/winetricks
+
+# Initialize Wine prefix with Windows 10 setting
+RUN set -ex && \
+    xvfb-run -a wine wineboot --init && \
+    xvfb-run -a winetricks win10
+
+# Install .NET Framework 4.8 (includes 4.7.2)
+RUN set -ex && \
+    xvfb-run -a winetricks -q dotnet48 || \
+    xvfb-run -a winetricks -q dotnet472 || \
+    xvfb-run -a winetricks -q dotnet471 || \
+    xvfb-run -a winetricks -q dotnet461 || \
+    echo "Warning: .NET installation may have failed"
+
+# Install Visual C++ Redistributables
+RUN xvfb-run -a winetricks -q vcrun2019 || echo "vcrun2019 failed, trying older versions" && \
+    xvfb-run -a winetricks -q vcrun2017 || echo "vcrun2017 failed" && \
+    xvfb-run -a winetricks -q vcrun2015 || echo "vcrun2015 failed"
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY package*.json ./
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p /app/trimble-converter/geodata
+
+# Set permissions
+RUN chmod -R 755 /app/trimble-converter/
+
+# Create a startup script
+RUN echo '#!/bin/bash\n\
+Xvfb :0 -screen 0 1024x768x16 &\n\
+sleep 2\n\
+npm start\n\
+' > /app/start.sh && chmod +x /app/start.sh
+
+EXPOSE 3000
+
+CMD ["/app/start.sh"]

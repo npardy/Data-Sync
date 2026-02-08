@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Android Test</title>
+</head>
+<body>
+    <h1>Android Detection Test</h1>
+    <p id="status">Checking...</p>
+    <button onclick="testDownload()">Test Download Function</button>
+    
+    <script>
+        // Check if Android interface exists
+        const isAndroid = typeof window.TrimbleSync !== 'undefined';
+        
+        document.getElementById('status').innerHTML = isAndroid ? 
+            '<span style="color: green">✓ Android Detected - TrimbleSync interface found</span>' : 
+            '<span style="color: red">✗ Not in Android app - TrimbleSync interface not found</span>';
+        
+        if (isAndroid) {
+            document.getElementById('status').innerHTML += '<br>Available methods:<br>';
+            for (let method in window.TrimbleSync) {
+                document.getElementById('status').innerHTML += '- ' + method + '<br>';
+            }
+        }
+        
+        function testDownload() {
+            if (window.TrimbleSync && window.TrimbleSync.syncJobToTrimble) {
+                window.TrimbleSync.syncJobToTrimble('test/path');
+                alert('Download function called!');
+            } else {
+                alert('TrimbleSync.syncJobToTrimble not available');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+cd "/volume1/Pardy Surveys/Data Sync/trimble-sync"
+echo "Checking current server status..."
+sudo docker-compose ps
+echo "Restarting server to load new endpoints..."
+sudo docker-compose restart
+echo "Waiting for server to start..."
+sleep 10
+echo "Testing endpoints..."
+curl -s http://localhost:3000/health
+echo ""
+echo "Testing download endpoint..."

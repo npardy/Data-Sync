@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <!-- These paths are overridden by command-line arguments in Docker/Wine environment -->
+    <!-- Keeping empty values to prevent hardcoded Windows paths from interfering -->
+    <add key="ConvertersDirectory" value=""/>
+    <add key="GeodataDirectory" value=""/>
+  </appSettings>
+  
+  <startup> 
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+  </startup>
+</configuration>

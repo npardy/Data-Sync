@@ -1,0 +1,47 @@
+FROM node:18
+
+# Install Python and Wine with all dependencies
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install -y \
+    python3 \
+    python3-pip \
+    wine \
+    wine32 \
+    winetricks \
+    xvfb \
+    cabextract \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up Wine environment
+ENV WINEARCH=win32
+ENV WINEPREFIX=/root/.wine
+ENV DISPLAY=:0
+
+# Initialize Wine and install .NET Framework (required for Trimble converter)
+RUN Xvfb :0 -screen 0 1024x768x16 & \
+    wine wineboot --init && \
+    winetricks -q dotnet48 && \
+    winetricks -q corefonts && \
+    wineserver -k
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install Node dependencies
+RUN npm install
+
+# Copy application files
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p /app/trimble-converter/geodata
+
+# Make sure the converter is executable
+RUN chmod +x /app/trimble-converter/JobConversion/TrimbleAccess.JobConverter.ConverterProcess.exe || true
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

@@ -1,0 +1,40 @@
+MANUAL DEPLOYMENT STEPS FOR TRIMBLE SYNC
+=========================================
+
+Since the automated script had issues, here are the manual steps to run:
+
+1. Connect to your NAS using PuTTY or SSH:
+   ssh pardysurveys@192.168.1.41
+
+2. Navigate to the project directory:
+   cd "/volume1/Pardy Surveys/Data Sync/trimble-sync"
+
+3. Stop the current container:
+   sudo docker-compose down
+
+4. Remove the old image (to ensure fresh build):
+   sudo docker rmi trimble-sync_trimble-sync
+
+5. Build the new image (this takes 10-15 minutes):
+   sudo docker-compose build --no-cache
+
+6. Start the updated container:
+   sudo docker-compose up -d
+
+7. Wait 10 seconds, then check if it's running:
+   sudo docker-compose ps
+
+8. Check the logs:
+   sudo docker-compose logs --tail 50
+
+9. Test if Wine is working:
+   sudo docker-compose exec trimble-sync wine --version
+
+10. Check if converter files are accessible:
+    sudo docker-compose exec trimble-sync ls -la /app/trimble-converter/JobConversion/
+
+NOTES:
+- You'll need to enter your sudo password multiple times
+- The build step (#5) will take 10-15 minutes
+- Don't close PuTTY during the build process
+- If the build fails, try running it again
